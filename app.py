@@ -4,22 +4,28 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+
 def perform_prediction(image_bytes):
-    return "not implemented"
+  return 'not implemented'
 
-@app.route("/", methods=["GET", "POST"])
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == "GET":
-        return jsonify({"status": "OK"})
-
-    file = request.files.get("file")
+  if request.method == 'POST':
+    file = request.files.get('file')
 
     if file is None:
-        return jsonify({"error": "no file"})
+      return jsonify({'status': False, 'error': 'no file'})
 
-    image_bytes = file.read()
-    result = perform_prediction(image_bytes)
-    return jsonify({"prediction": result})
+    try:
+      image_bytes = file.read()
+      result = perform_prediction(image_bytes)
+      return jsonify({'status': True, 'prediction': result})
+    except Exception as e:
+      return jsonify({'status': False, 'error': str(e)})
 
-if __name__ == "__main__":
-    app.run(debug=True)
+  return jsonify({'status': True, 'message': 'OK'})
+
+
+if __name__ == '__main__':
+  app.run(debug=True)
