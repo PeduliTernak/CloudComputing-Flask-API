@@ -5,6 +5,7 @@ import numpy as np
 from helpers import image_load_img_manual
 
 model = load_model('cnn_penyakit.h5')
+penyakit = ['lumpy', 'masitis', 'normal', 'pmk']
 
 
 def preprocess_image(image_bytes):
@@ -29,4 +30,5 @@ def predict_with_model(image_bytes):
   predictions = model.predict(normalized_image)
   # Assuming it's a classification task
   predicted_class = np.argmax(predictions, axis=1)
-  return predicted_class
+  result = penyakit[predicted_class[0]]
+  return result

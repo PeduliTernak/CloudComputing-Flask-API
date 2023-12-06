@@ -7,10 +7,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-def perform_prediction(image_bytes):
-  return predict_with_model(image_bytes).tolist()
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
   if request.method == 'POST':
@@ -21,7 +17,7 @@ def index():
 
     try:
       image_bytes = file.read()
-      result = perform_prediction(image_bytes)
+      result = predict_with_model(image_bytes)
       return jsonify({'status': True, 'prediction': result})
     except Exception as e:
       print(e)
