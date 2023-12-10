@@ -13,7 +13,7 @@ def index():
     file = request.files.get('file')
 
     if file is None:
-      return jsonify({'status': False, 'error': 'no file'})
+      return jsonify({'status': False, 'error': 'no file'}), 400
 
     try:
       image_bytes = file.read()
@@ -21,7 +21,7 @@ def index():
       return jsonify({'status': True, 'prediction': result})
     except Exception as e:
       print(e)
-      return jsonify({'status': False, 'error': str(e)})
+      return jsonify({'status': False, 'error': str(e)}), 500
 
   return jsonify({'status': True, 'message': 'OK'})
 
