@@ -1,0 +1,61 @@
+steps:
+  # Build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-southeast2-docker.pkg.dev/peduli-ternak/flask-api-repo/ml-deployment",
+        ".",
+      ]
+  # Push the container image to Artifact Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "asia-southeast2-docker.pkg.dev/peduli-ternak/flask-api-repo/ml-deployment",
+      ]
+  # Deploy container image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "run",
+        "deploy",
+        "ml-deployment",
+        "--image",
+        "asia-southeast2-docker.pkg.dev/peduli-ternak/flask-api-repo/ml-deployment",
+        "--region",
+        "asia-southeast2",
+        "--no-allow-unauthenticated",
+        "--min-instances",
+        "0",
+        "--max-instances",
+        "3",
+        "--memory",
+        "1Gi",
+        "--cpu",
+        "2",
+        "--service-account",
+        "cloud-run-flask-api@peduli-ternak.iam.gserviceaccount.com",
+      ]
+  # Give the service account permission to invoke the Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "run",
+        "services",
+        "add-iam-policy-binding",
+        "ml-deployment",
+        "--region",
+        "asia-southeast2",
+        "--member",
+        "serviceAccount:cloud-run-flask-api@peduli-ternak.iam.gserviceaccount.com",
+        "--role",
+        "roles/run.invoker",
+        "--platform",
+        "managed",
+      ]
+images:
+  ["asia-southeast2-docker.pkg.dev/peduli-ternak/flask-api-repo/ml-deployment"]

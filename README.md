@@ -20,11 +20,17 @@ This repository contains the deployment of a Machine Learning Image Recognition 
 
 ## Deployment
 
-Build the Docker image and run the Docker container, or [Deploy to Cloud Run](https://cloud.google.com/run/docs/deploying)
+Build the Docker image and run the Docker container
 
 ```bash
-docker build -t model-deployment .
-docker run -p 8080:8080 -d model-deployment
+docker build -t ml-deployment .
+docker run -p 8080:8080 -d ml-deployment
+```
+
+or [Deploy to Cloud Run](https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run) by configuring the `cloudbuild.yaml` and [`.gcloudignore`](https://cloud.google.com/sdk/gcloud/reference/topic/gcloudignore), then submit it
+
+```bash
+gcloud builds submit --config=cloudbuild.yaml
 ```
 
 ## API Documentation
