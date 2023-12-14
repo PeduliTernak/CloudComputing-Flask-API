@@ -72,8 +72,10 @@ Base URL ([Require Authentication](https://cloud.google.com/run/docs/authenticat
 - **Body:**
 
   - **Form-Data** with a **single file** field named `file`
+  - **Form-Data** with a **string of list (matrix) of gejala penyakit** field named `gejala_matrix`
     ```yaml
     "file": image.jpg
+    "gejala_matrix": "[0, 0, 0, 0, 1, 1, 0, ...]"
     ```
 
 ##### Response
@@ -83,7 +85,13 @@ Base URL ([Require Authentication](https://cloud.google.com/run/docs/authenticat
   ```json
   {
     "status": true,
-    "prediction": "result"
+    "prediction": {
+      "penyakit": ["Masitis", "Penyakit 2"],
+      "penanganan": [
+        "Menjaga kandang untuk tetap bersih. Memakai antiseptik ...",
+        "Deskripsi penanganan dari penyakit 2",
+      ]
+    }
   }
   ```
 

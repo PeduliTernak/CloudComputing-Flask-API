@@ -162,3 +162,5 @@ cython_debug/
 # Other
 .vscode/
 .ignore/
+ML-Model/
+not_used/

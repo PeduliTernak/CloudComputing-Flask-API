@@ -5,7 +5,6 @@ from PIL import Image as pil_image
 def image_load_img_manual(
   image_bytes,
   target_size=None,
-  interpolation="nearest",
 ):
   """Load image from bytes.
 
@@ -16,7 +15,6 @@ def image_load_img_manual(
   Source:
     tf.keras.utils.load_img
     https://github.com/keras-team/keras/blob/v2.14.0/keras/utils/image_utils.py
-
   """
   img = pil_image.open(io.BytesIO(image_bytes))
 
@@ -25,21 +23,12 @@ def image_load_img_manual(
   except AttributeError:
     pil_image_resampling = pil_image
 
-  if pil_image_resampling is not None:
-    _PIL_INTERPOLATION_METHODS = {
-        "nearest": pil_image_resampling.NEAREST,
-        "bilinear": pil_image_resampling.BILINEAR,
-        "bicubic": pil_image_resampling.BICUBIC,
-        "hamming": pil_image_resampling.HAMMING,
-        "box": pil_image_resampling.BOX,
-        "lanczos": pil_image_resampling.LANCZOS,
-    }
-
   if target_size is not None:
     width_height_tuple = (target_size[1], target_size[0])
     if img.size != width_height_tuple:
 
-      resample = _PIL_INTERPOLATION_METHODS[interpolation]
+      # assuming `interpolation` is 'nearest'
+      resample = pil_image_resampling.NEAREST
 
       # `if keep_aspect_ratio:` deleted
       # assuming `keep_aspect_ratio` is False
