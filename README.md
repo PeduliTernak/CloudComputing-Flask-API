@@ -1,6 +1,6 @@
 # PeduliTernak - Flask (ML Model Deployment)
 
-This repository contains the deployment of a Machine Learning Image Recognition Model. Predictions can be performed using API request methods.
+This repository contains the deployment of a Machine Learning Image Recognition Model, and Machine Learning Random Forest Model. Predictions can be performed using API request methods.
 
 ## How to Use
 
