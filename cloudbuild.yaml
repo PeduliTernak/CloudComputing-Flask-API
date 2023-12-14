@@ -33,9 +33,9 @@ steps:
         "--max-instances",
         "3",
         "--memory",
-        "1Gi",
+        "4Gi",
         "--cpu",
-        "2",
+        "4",
         "--service-account",
         "cloud-run-flask-api@peduli-ternak.iam.gserviceaccount.com",
       ]
