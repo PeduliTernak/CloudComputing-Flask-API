@@ -383,7 +383,7 @@ def prediksi_hasil(gejala_pengguna):
     "Diare" : "Untuk menggantikan cairan tubuh yang hilang akibat diare pada ternak dapat diberikan cairan elektrolit terutama air, bikarbonat, sodium, dan potassium atau larutan garam agar tidak terjadi dehidrasi yang lebih lanjut.",
     "Paratubercolosis" : "Hewan-hewan yang positif MAP harus diafkir sesegera mungkin dan seluruh hewan harus dilakukan pengujian kembali dengan kombinasi uji yang berbeda.",
     "Kembung" : "Memberikan anti bloat yang mengandung dimethicone serta minyak nabati yang berasal dari kacang tanah. Minyak nabati bisa disuntikkan pada sapi yang terkena bloat. Atau dapat di konsultasikan pada dokter hewan untuk pemakaian obat yang cocok.",
-    "PMK" : "masih ksg"
+    "PMK" : "Segera mungkin menghubungi puskeswan terdekat. Untuk mencegah penyebaran dapat melakukan biosecurity dengan disinfeksi pada kandang, alat angkut, peralatan lain dan orang yang masuk di lingkungan kandang."
   }
 
   #label_penyakit = ['Brucellosis', 'Masitis', 'Pneumonia', 'Hipocalcemi', 'BEF', 'Skabies/LSD', 'Diare', 'Paratubercolosis', 'Kembung', 'Cacingan']
