@@ -37,7 +37,7 @@ gcloud builds submit --config=cloudbuild.yaml
 
 ### Summary
 
-Base URL ([Require Authentication](https://cloud.google.com/run/docs/authenticating/service-to-service#acquire-token)): <https://flask-api-image-74e64w7rga-et.a.run.app/>
+Base URL ([Require Authentication](https://cloud.google.com/run/docs/authenticating/service-to-service#acquire-token)): <https://ml-deployment-74e64w7rga-et.a.run.app>
 
 | Route | HTTP Method | Description               |
 | ----- | ----------- | ------------------------- |
